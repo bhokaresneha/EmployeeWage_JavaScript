@@ -10,6 +10,12 @@ const FULL_TIME_HRs=8;
 const WAGE_PER_HRs=20;
 let Employee_Hours=0;
 let Employee_Total_Working_Hours=0;
+
+
+
+/*Check Employe is Present or Absent Using Random Function*/
+
+
 let Attendance=Math.floor(Math.random()*2);
 console.log(Attendance);
 
@@ -19,6 +25,12 @@ if(Attendance==1){
     console.log("Employee is Present !!!");
 
     getWageforMultipleDays();
+    //let Employee_Hours=getWorkignHours();
+
+    //console.log("Employee is Present for "+Employee_Hours+" Hours");
+    //let Employee_Wage=Employee_Hours*WAGE_PER_HRs;
+    //console.log("Employee Wage is : "+Employee_Wage);    
+
    }else{
     console.log("Employee is Absent");
 }
@@ -39,8 +51,7 @@ function getWorkignHours(){
             console.log(" ");
             break;
         }
- 
-}
+ }
 function getWageforMultipleDays(){
     let Total_Working_Days=prompts("Enter Total Number of Working Days : ");
     for(let i=0;i<Total_Working_Days;i++){
