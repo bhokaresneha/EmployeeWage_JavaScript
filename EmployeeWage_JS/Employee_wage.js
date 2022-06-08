@@ -3,10 +3,14 @@
 console.log("Welcome to Employee Wage Problem");
 
 //variable initialization
-
 const PART_TIME_HRs=4;
 const FULL_TIME_HRs=8;
 const WAGE_PER_HRs=20;
+
+
+/*Check Employe is Present or Absent Using Random Function*/
+
+
 let Attendance=Math.floor(Math.random()*2);
 console.log(Attendance);
 
