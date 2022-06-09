@@ -15,9 +15,10 @@ console.log("Welcome to Employee Wage Problem");
     let monthlyWages = 0;
     let totalWorkingHrs=0;
     let totalWorkingDays=0;
-    let dailyWageArray=Array();
+    let dailyWageArray=new Array();
     let mapDayWithWage;
-
+    let empDailyWageMap=new Map();
+    
         function attendanceCheck(attendance)
         {
             switch (attendance) {
@@ -28,13 +29,13 @@ console.log("Welcome to Employee Wage Problem");
                         return FULL_TIME_HRs;
                         break;
                     default:
-                        console.log(" ");
+                       return 0;
                         break;
                 }
             }
                 
             function calculateTotalWage(dailyWage){
-              return monthlyWages += dailyWage
+               monthlyWages += dailyWage
             }
             //calculating daily wage
             function calculateDailyWage(workingHrs){
@@ -46,21 +47,23 @@ console.log("Welcome to Employee Wage Problem");
           
             totalWorkingDays++;
             //getting working hr based on employee worked part time or full time
-            attendance=parseInt(Math.random()*2)
+            attendance=parseInt(Math.random()*3)
             workingHrs=attendanceCheck(attendance)
             
             //Calculated daily wage storing in array
             dailyWage =calculateDailyWage(workingHrs)
             dailyWageArray.push(dailyWage);
-            console.log("Daily wage is " + dailyWage);
+          //  console.log("Daily wage is " + dailyWage);
             
-            //Calculating Monthly wage
-            monthlyWages = calculateTotalWage(dailyWage);
-            //Calculating Total Working Hrs
             totalWorkingHrs=totalWorkingHrs+workingHrs;
+            empDailyWageMap.set(totalWorkingDays,dailyWage);
+
 
         }
-        console.log("\t Total Working Days="+totalWorkingDays+"\t Total working Hrs="+totalWorkingHrs+"\tMonthly Wages= "+monthlyWages);
+
+        console.log(empDailyWageMap);
+     //   console.log("emp tottal wage"+Array.from(empDailyWageMap.values()));
+
 
         console.log("Daily Wages:: "+dailyWageArray);
         day=0;
@@ -96,10 +99,11 @@ console.log("Check if there is any part time wage: "+mapDayWithWage.some(wage =>
 
 //g. Find the number of days the Employee Worked
 let totalDaysWorked = 0;
-totalDaysWorked = dailyWageArray.reduce((totalDaysWork, dailyWage) => {
+let totalDaysWork=0;
+totalDaysWorked = dailyWageArray.reduce((dailyWage) => {
     if(dailyWage > 0)
-        totalDaysWork++;
-    return totalDaysWork;
+        return totalDaysWork++;
+return totalDaysWork;
 });
 console.log("No. of days employee worked: "+ totalDaysWorked);
 
