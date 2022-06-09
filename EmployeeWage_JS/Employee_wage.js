@@ -23,15 +23,8 @@ console.log(Attendance);
 //Present=1    Absent=0
 if(Attendance==1){
     console.log("Employee is Present !!!");
-
     getWageforMultipleDays();
-    //let Employee_Hours=getWorkignHours();
-
-    //console.log("Employee is Present for "+Employee_Hours+" Hours");
-    //let Employee_Wage=Employee_Hours*WAGE_PER_HRs;
-    //console.log("Employee Wage is : "+Employee_Wage);    
-
-   }else{
+      }else{
     console.log("Employee is Absent");
 }
 
