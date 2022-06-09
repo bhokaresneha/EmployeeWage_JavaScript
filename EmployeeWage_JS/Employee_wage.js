@@ -116,8 +116,8 @@ console.log(empDailyWageMap);
 console.log("Employee Wage Map totalWage : " + Array.from(empDailyWageMap.values()).reduce(totalWages, 0))
 console.log("Daily wage using map: \n"+JSON.stringify([...empDailyWageMap.entries()]));
 
+//UC 9- 
 
-// UC-9 Arrow functions
 //a. Calc total Wage and total hours worked
 
 let count = 0;
