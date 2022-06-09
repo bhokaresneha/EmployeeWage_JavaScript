@@ -1,3 +1,4 @@
+
 /*---------------------------------Employee Wage--------------------------------------*/
 
 console.log("Welcome to Employee Wage Problem");
@@ -15,6 +16,8 @@ console.log("Welcome to Employee Wage Problem");
     let totalWorkingHrs=0;
     let totalWorkingDays=0;
     let dailyWageArray=Array();
+    let mapDayWithWage;
+
         function attendanceCheck(attendance)
         {
             switch (attendance) {
@@ -29,7 +32,10 @@ console.log("Welcome to Employee Wage Problem");
                         break;
                 }
             }
-                       
+                
+            function calculateTotalWage(dailyWage){
+              return monthlyWages += dailyWage
+            }
             //calculating daily wage
             function calculateDailyWage(workingHrs){
                 return workingHrs * WAGE_PER_HOUR;
@@ -49,13 +55,51 @@ console.log("Welcome to Employee Wage Problem");
             console.log("Daily wage is " + dailyWage);
             
             //Calculating Monthly wage
-            monthlyWages = monthlyWages + dailyWage;
+            monthlyWages = calculateTotalWage(dailyWage);
             //Calculating Total Working Hrs
             totalWorkingHrs=totalWorkingHrs+workingHrs;
 
-          //  console.log("day=>"+i+"\t working hrs =>"+workingHrs+"\t Daily wage="+dailyWage+"\t Total working Hrs"+totalWorkingHrs);
         }
         console.log("\t Total Working Days="+totalWorkingDays+"\t Total working Hrs="+totalWorkingHrs+"\tMonthly Wages= "+monthlyWages);
 
         console.log("Daily Wages:: "+dailyWageArray);
-    
+        day=0;
+        function mapDayWithDailyWage(dailyWage){
+            day++;
+            return day+"="+dailyWage;
+        }
+
+
+//a.Calculate total Wage using Array forEach or reduce method
+      dailyWageArray.forEach(calculateTotalWage); 
+      console.log("\t Total Working Days="+totalWorkingDays+"\t Total working Hrs="+totalWorkingHrs+"\tMonthly Wages= "+monthlyWages);
+
+//b. Show the Day along with Daily Wage using Array map helper function        
+    mapDayWithWage = dailyWageArray.map(mapDayWithDailyWage);
+    console.log("Daily wage: \n"+mapDayWithWage);
+    console.log("Total working days: "+totalWorkingDays+"\nTotal working hrs: "+ totalWorkingHrs+"\nTotal wage: "+monthlyWages);
+
+
+//c. Show Days when Full time wage of 160 were earned using filter function
+
+let empWithFullTime = mapDayWithWage.filter(day => day.includes("160"));
+console.log("Emp with full time wage on days: "+empWithFullTime);
+
+//d. Find the first occurrence when Full Time Wage was earned using find function
+console.log("First time FullTime wage was earned on: "+mapDayWithWage.find(day => day.includes("160")));
+
+//e. Check if Every Element of Full Time Wage is truly holding Full time wage
+console.log("Check if all elements have full time wage: "+empWithFullTime.every(wage => wage.includes("160")));
+
+//f. Check if there is any Part Time Wage
+console.log("Check if there is any part time wage: "+mapDayWithWage.some(wage => wage.includes("80")));
+
+//g. Find the number of days the Employee Worked
+let totalDaysWorked = 0;
+totalDaysWorked = dailyWageArray.reduce((totalDaysWork, dailyWage) => {
+    if(dailyWage > 0)
+        totalDaysWork++;
+    return totalDaysWork;
+});
+console.log("No. of days employee worked: "+ totalDaysWorked);
+
