@@ -3,62 +3,59 @@
 console.log("Welcome to Employee Wage Problem");
 
 //variable initialization
-const prompts=require("prompt-sync")();
+    let attendance;
+    let WAGE_PER_HOUR = 20;
+    let WORKING_DAYS_PER_MONTH = 20;
+    let MAX_WORKING_DAYS = 20;
+    let MAX_WORKING_HRS = 100;
+    let FULL_TIME_HRs=8;
+    let PART_TIME_HRs=4
+    let workingHrs = 0;
+    let monthlyWages = 0;
+    let totalWorkingHrs=0;
+    let totalWorkingDays=0;
+    let dailyWageArray=Array();
+        function attendanceCheck(attendance)
+        {
+            switch (attendance) {
+                    case 0:
+                        return PART_TIME_HRs;
+                        break;
+                    case 1:
+                        return FULL_TIME_HRs;
+                        break;
+                    default:
+                        console.log(" ");
+                        break;
+                }
+            }
+                       
+            //calculating daily wage
+            function calculateDailyWage(workingHrs){
+                return workingHrs * WAGE_PER_HOUR;
+            }
+        
+        //Calculating Wages till Number of Working Days or Total Working Hours per month is Reached
+        for ( i = 1; i<= MAX_WORKING_DAYS && totalWorkingHrs<MAX_WORKING_HRS ;i++){
+          
+            totalWorkingDays++;
+            //getting working hr based on employee worked part time or full time
+            attendance=parseInt(Math.random()*2)
+            workingHrs=attendanceCheck(attendance)
+            
+            //Calculated daily wage storing in array
+            dailyWage =calculateDailyWage(workingHrs)
+            dailyWageArray.push(dailyWage);
+            console.log("Daily wage is " + dailyWage);
+            
+            //Calculating Monthly wage
+            monthlyWages = monthlyWages + dailyWage;
+            //Calculating Total Working Hrs
+            totalWorkingHrs=totalWorkingHrs+workingHrs;
 
-const PART_TIME_HRs=4;
-const FULL_TIME_HRs=8;
-const WAGE_PER_HRs=20;
-let Employee_Hours=0;
-let Employee_Total_Working_Hours=0;
-
-
-
-/*Check Employe is Present or Absent Using Random Function*/
-
-
-let Attendance=Math.floor(Math.random()*2);
-console.log(Attendance);
-
-//Checking employee is present or absent
-//Present=1    Absent=0
-if(Attendance==1){
-    console.log("Employee is Present !!!");
-
-    getWageforMultipleDays();
-    //let Employee_Hours=getWorkignHours();
-
-    //console.log("Employee is Present for "+Employee_Hours+" Hours");
-    //let Employee_Wage=Employee_Hours*WAGE_PER_HRs;
-    //console.log("Employee Wage is : "+Employee_Wage);    
-
-   }else{
-    console.log("Employee is Absent");
-}
-
-function getWorkignHours(){
-    let Attendance_Time=Math.floor(Math.random()*2);
-
-    //Part_Time=0 Full_Time=1
-    switch(Attendance_Time){
-        case 0:
-            return PART_TIME_HRs;
-            break;
-
-        case 1:
-            return FULL_TIME_HRs   
-            break;
-        default:
-            console.log(" ");
-            break;
+          //  console.log("day=>"+i+"\t working hrs =>"+workingHrs+"\t Daily wage="+dailyWage+"\t Total working Hrs"+totalWorkingHrs);
         }
- }
-function getWageforMultipleDays(){
-    let Total_Working_Days=prompts("Enter Total Number of Working Days : ");
-    for(let i=0;i<Total_Working_Days;i++){
-        Employee_Hours=getWorkignHours();
-        Employee_Total_Working_Hours=Employee_Total_Working_Hours+Employee_Hours;
-    }
-    console.log("Total Working Hours of Employee is : "+Employee_Total_Working_Hours);
-    let Employee_Wage=Employee_Total_Working_Hours*WAGE_PER_HRs;
-    console.log("Employee Wage is : "+Employee_Wage);
-}
+        console.log("\t Total Working Days="+totalWorkingDays+"\t Total working Hrs="+totalWorkingHrs+"\tMonthly Wages= "+monthlyWages);
+
+        console.log("Daily Wages:: "+dailyWageArray);
+    
