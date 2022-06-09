@@ -1,3 +1,8 @@
+/*---------------------------------Employee Wage--------------------------------------*/
+
+console.log("Welcome to Employee Wage Problem");
+
+//variable initialization
     let attendance;
     let WAGE_PER_HOUR = 20;
     let WORKING_DAYS_PER_MONTH = 20;
