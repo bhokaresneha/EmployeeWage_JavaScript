@@ -1,3 +1,9 @@
+
+/*---------------------------------Employee Wage--------------------------------------*/
+
+console.log("Welcome to Employee Wage Problem");
+
+//variable initialization
     let attendance;
     let WAGE_PER_HOUR = 20;
     let WORKING_DAYS_PER_MONTH = 20;
@@ -63,7 +69,7 @@
             return day+"="+dailyWage;
         }
 
-//UC-7
+
 //a.Calculate total Wage using Array forEach or reduce method
       dailyWageArray.forEach(calculateTotalWage); 
       console.log("\t Total Working Days="+totalWorkingDays+"\t Total working Hrs="+totalWorkingHrs+"\tMonthly Wages= "+monthlyWages);
@@ -96,3 +102,4 @@ totalDaysWorked = dailyWageArray.reduce((totalDaysWork, dailyWage) => {
     return totalDaysWork;
 });
 console.log("No. of days employee worked: "+ totalDaysWorked);
+
