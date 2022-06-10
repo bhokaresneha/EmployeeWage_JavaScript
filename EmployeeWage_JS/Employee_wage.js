@@ -19,7 +19,8 @@ console.log("Welcome to Employee Wage Problem");
     let mapDayWithWage;
     let empDailyWageMap=new Map();
     let empDailyHrsMap=new Map();
-    
+    let empDailyHrsAndWageArr=new Array();
+
         function attendanceCheck(attendance)
         {
             switch (attendance) {
@@ -43,7 +44,6 @@ console.log("Welcome to Employee Wage Problem");
                 return workingHrs * WAGE_PER_HOUR;
             }
      
-            let absent=0;
         //Calculating Wages till Number of Working Days or Total Working Hours per month is Reached
         for ( i = 1; i<= MAX_WORKING_DAYS && totalWorkingHrs<MAX_WORKING_HRS ;i++)
         {      
@@ -60,6 +60,17 @@ console.log("Welcome to Employee Wage Problem");
             empDailyWageMap.set(totalWorkingDays,dailyWage);
             //UC-9 Using Map to store Day wise Hours
             empDailyHrsMap.set(totalWorkingDays,workingHrs,);
+            empDailyHrsAndWageArr.push(
+                {
+                    dayNum: totalWorkingDays,
+                    dailyHours: workingHrs,
+                    dailyWage: calculateDailyWage(workingHrs),
+                    toString() {
+                        return '\nDay' + this.dayNum + ' => Working Hours is ' + this.dailyHours +
+                            ' And Wage Earned = ' + this.dailyWage
+                    },
+                });
+
      
     }
 //UC-6
@@ -116,7 +127,8 @@ console.log(empDailyWageMap);
 console.log("Employee Wage Map totalWage : " + Array.from(empDailyWageMap.values()).reduce(totalWages, 0))
 console.log("Daily wage using map: \n"+JSON.stringify([...empDailyWageMap.entries()]));
 
-//UC 9- 
+
+// UC-9 Arrow functions
 
 //a. Calc total Wage and total hours worked
 
@@ -130,6 +142,9 @@ console.log("UC9A - Emp Wage with Arrow. : " + "Total Hours: " + totalHours + ",
 let nonWorkingDays = new Array();
 let partWorkingDays = new Array();
 let fullWorkingDays = new Array();
+console.log(empDailyHrsMap);
+
+
 empDailyHrsMap.forEach((value, key) => {
                                                 if (value == 8) fullWorkingDays.push(key);
                                                 else if (value == 4) partWorkingDays.push(key);
@@ -138,4 +153,9 @@ empDailyHrsMap.forEach((value, key) => {
 console.log("Full Working Days : " + fullWorkingDays);
 console.log("Part Working Days : " + partWorkingDays);
 console.log("Non Working Days : " + nonWorkingDays);
+
+
+//UC-10
+
+console.log("UC-10 Showing Daily Hours worked and Wage Earned : " + empDailyHrsAndWageArr);
 
